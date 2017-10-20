@@ -9,7 +9,7 @@ angular.module('ProductService', []).factory('Products', ['$http',
                     //console.log(data);
                     callback(data);
                 }).error(function() {
-                    alert("error");
+                    alert("getAll products error");
                 });
             },
             getOne: function(id, callback) {
@@ -20,7 +20,7 @@ angular.module('ProductService', []).factory('Products', ['$http',
                     //console.log(data);
                     callback(data);
                 }).error(function() {
-                    alert("error");
+                    alert("product load error");
                 });
             }
            /*,create: function(productData) {

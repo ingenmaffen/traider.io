@@ -1,27 +1,26 @@
-var express = require('express'),
-    cookieParser = require('cookie-parser'),
-    expressSession = require('express-session');
+var express = require('express'), //package.json
+    cookieParser = require('cookie-parser'), //package.json
+    expressSession = require('express-session') //package.json
+    bodyParser = require('body-parser'); //package.json
 
-var routes = require('./routes/routes.js');
-var MongoStore = require('connect-mongo')({
-    session: expressSession
-});
-
+var routes = require('./routes/routes.js'); //router.js
+var MongoStore = require('connect-mongo')(expressSession);
 
 createServer = function createServer() {
 
     var server = express();
     // specify middleware 
-    //server.use(express.bodyParser());
+    server.use(bodyParser());
     server.use(express.static(__dirname + '/public'));
     server.use('/product/*', express.static(__dirname + '/public'));
     server.use('/basket/', express.static(__dirname + '/public'));
 
     server.use(cookieParser());
     server.use(expressSession({
-        secret: 'mdfkldfgkl&*(sas/d,asldsjf()*)(mlksdmfNfjSDsdfYUHNn',
+        secret: 'fo8X9074&398234hkf_bfs78bUVSo',
         store: new MongoStore({
-            db: 'traiderioSessions'
+            url: 'mongodb://localhost:27017/traiderSession',
+            autoRemove: 'native' // Default
         })
     }));
 
