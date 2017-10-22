@@ -15,5 +15,5 @@ exports.dbName = function() {
 };
 
 exports.makeObjectID = function(id) {
-    return ObjectID(id);
+    return ObjectId(id);
 };
