@@ -6,6 +6,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',
                 templateUrl: '/views/product-list.html',
                 controller: 'ProductListController'
             })
+            .when('/admin-session', {
+                templateUrl: '/views/admin.html'
+            })
             .when('/product/:id', {
                 templateUrl: '/views/product-details.html',
                 controller: 'ProductDetailsController'

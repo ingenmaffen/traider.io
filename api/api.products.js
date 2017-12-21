@@ -6,6 +6,7 @@ module.exports = function attachHandlers(router) { //, passport) {
     router.get('/api/products/seed', seed);
     router.get('/api/products', list);
     router.get('/api/products/:id', view);
+    router.get('/api/admin-session', admin);
 };
 
 
@@ -77,5 +78,23 @@ function view(req, res) {
         } else {
             return res.json(data);
         }
+    });
+}
+
+function seed(req, res) {
+    db.insert({
+        "name": "Horse",
+        "description": "A lovely horse",
+        "minPrice": 59.99,
+        "offers": {
+            "price": 59.99,
+            "stock": 10
+        }
+    });
+}
+
+function admin(req, res) {
+    db.getAll(function(data) {
+        res.json(data);
     });
 }
